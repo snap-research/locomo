@@ -62,13 +62,13 @@
               <a href="http://www.stulyakov.com/">Sergey Tulyakov</a><sup>3</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a><sup>1</sup>,
+              <a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a><sup>1&dagger;</sup>,
             </span>
             <span class="author-block">
-              <a href="https://fvancesco.github.io/">Francesco Barbieri</a><sup>3</sup>,
+              <a href="https://fvancesco.github.io/">Francesco Barbieri</a><sup>&dagger;</sup>,
             </span>
             <span class="author-block">
-              <a href="https://yuwfan.github.io/">Yuwei Fang</a><sup>3</sup>
+              <a href="https://yuwfan.github.io/">Yuwei Fang</a><sup>3&dagger;</sup>
             </span>
           </div>
 
@@ -76,6 +76,7 @@
             <span class="author-block"><sup>1</sup>University of North Carolina, Chapel Hill</span>
             <span class="author-block"><sup>2</sup>University of Southern California</span>
             <span class="author-block"><sup>3</sup>Snap Research</span>
+            <span class="author-block"><sup>&dagger;</sup>Equal advising</span>
           </div>
 
           <div class="column has-text-centered">
@@ -191,7 +192,7 @@
     <!-- Motivation. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">How to generate <i>very</i> long-term conversations?</h2>
+        <h2 class="title is-3">How do we generate <i>very</i> long-term conversations?</h2>
         <div class="intro-figure">
           <img src="./static/images/intro_figure_conv_only_v2.svg" alt="Intro" style="float: right; margin: 8px;"/>
 <!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
@@ -199,123 +200,138 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            An overview of conversations in LoCoMo is shown to the right. We create two <b>virtual agents</b>, each initialized with a
-            LLM. To start, unique <b>persona statements</b> are assigned to each agent, ensuring the integration of distinct personalities
-            into their dialogues. To mirror real-life experiences, we create a <b>temporal event graph</b> for
-            each agent, which illustrates a realistic sequence of life events. 
-            The LLM <b>agent architecture</b> is utilized for each agent,
-            enabling them to effectively memorize and reflect
-            conversation history into ongoing dialogues. Further, each agent Li can share coherent images,
-            thereby enhancing the <b>multi-modal dialogue</b> aspect. Finally, human annotators are tasked with <b>manually
-              filtering and refining</b> the generated data.
+            An example of a conversation in LoCoMo is shown to the right. 
+            
+            <ul>
+              <li>We create two <b>virtual agents</b>, each initialized with a LLM.</li>
+              <li>To start, unique <b>persona statements</b> are assigned to each agent, ensuring the integration of distinct personalities into their dialogues.</li>
+              <li>To mirror real-life experiences, we create a <b>temporal event graph</b> for each agent, which illustrates a realistic sequence of life events.</li>
+              <li>The LLM <b>agent architecture</b> is utilized for each agent, enabling them to effectively memorize and reflect conversation history into ongoing dialogues.</li>
+              <li>Further, each agent can share coherent images, thereby enhancing the <b>multi-modal dialogue</b> aspect.</li>
+              <li>Finally, human annotators are tasked with <b>manually filtering and refining</b> the generated data.</li>
+            </ul>
           </p>
         </div>
       </div>
     </div>
     <!--/ Paper video. -->
+
+
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<!--        <iframe src="./static/images/main_figure_arxiv.pdf" style="width: 100%;height: 100%;border: none;"></iframe>-->
+      <img src="./static/images/main_v4.svg" alt="Logo" style="margin-top:50px;"/>
+<!--      <video id="teaser" autoplay muted loop playsinline height="100%">-->
+<!--        <source src="./static/images/main_figure.svg"-->
+<!--                type="image/svg+xml">-->
+<!--      </video>-->
+      <h2 class="subtitle has-text-centered">
+        <b>Overview of the generative pipeline for LoCoMo.</b>  Each LLM agent is assigned a distinct persona and
+            a timeline of causally connected events in their file. The agent is equipped with a memory and reflection module to
+            retrieve relevant history for dialog generation and is also enabled for image-sharing and image-reaction behaviors
+            (left). The generated conversations are edited by human annotators to maintain long-range consistency (right).
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<!--        <iframe src="./static/images/main_figure_arxiv.pdf" style="width: 100%;height: 100%;border: none;"></iframe>-->
+      <img src="./static/images/events.svg" alt="Logo"/>
+<!--      <video id="teaser" autoplay muted loop playsinline height="100%">-->
+<!--        <source src="./static/images/main_figure.svg"-->
+<!--                type="image/svg+xml">-->
+<!--      </video>-->
+      <h2 class="subtitle has-text-centered">
+        <b>Temporal Event Graph Creation.</b> Each event is generated in accordance with the specified persona p
+        and causal connections l between events are depicted to illustrate the casual relationships among them.
+      </h2>
+    </div>
   </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Dataset Construction</h2>
-        <div class="dataset-figure">
-          <img src="./static/images/dataset_construction.png" alt="construction" />
-<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
-<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-        </div>
-        <!-- Interpolating. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Evaluation Framework</h2>
         <div class="content has-text-justified">
           <p>
-Step-by-step demonstration of the automated pipeline for generating contrast sets for <span class="dnerf">CoCoCON</span>.
-            Contrast sets generated from this pipeline for the validation split of COCO are subjected to manual
-            filtering and then used to prepare the \dataset{} benchmark.
-          </p>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h2 class="title is-4">Examples from <span class="dnerf">CoCoCON</span> benchmark</h2>
-                <div class="dataset-figure">
-          <img src="./static/images/cococon.svg" alt="cococon" />
-<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
-<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            For each example, we show the relevant image (left), the ground truth caption,
-VQA question, or image generation prompt for the image with the perturbed concept in green (middle), the set of perturbations used to
-generate alternative answers and predictions from Unified-IO XL for VQA (V), image generation (G) and localization (L) (right columns). &#9989; and &#10060; indicate scenarios where the model predictions for captioning and the corresponding task for that particular contrast set are
-consistent and inconsistent respectively. ‘-’ denotes a lack of localization annotations for the given sample.
-          </p>
-        </div>
-        <!--/ Re-rendering. -->
-
-
-        <!-- Re-rendering. -->
-        <h2 class="title is-4">How to evaluate consistency between heterogeneous output modalities?</h2>
-                <div class="dataset-figure">
-          <img src="./static/images/fig1.svg" alt="evaluation" />
-<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
-<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            We use the unified models' likelihoods for each gold and contrast labels of each task to rank the outputs of anchor task (image captioning) and a target task (VQA, localization, text-to-image generation). If the gold outputs or contrast ouputs for both tasks are ranked higher, model is consistenct, otherwise it is inconsistent. With this method, we avoid having to compare hetergenous modalities e.g., a bounding box vs. a caption.
-          </p>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Experiments. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Experiments</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            We evaluate pretrained models on the COCOCON benchmark. (a) % Consistency of Unified-IO XL and OFA-HUGE
-models for varying difficulty (k) and all tasks in COCOCON, (b) % consistency (k=1) values for different sizes of Unified-IO models and
-(c) comparison of % accuracy with % consistency (k=1) values for all sizes of OFA models and our OFACon model.
-          </p>
-                <div class="experiment-figure">
-          <img src="./static/images/main_table_iccv.svg" alt="tables" />
-<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
-<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-        </div>
-        </div>
-      </div>
-    </div>
-    <!--/ Experiments. -->
-
-      <!-- Findings. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Findings</h2>
-
-        <div class="content has-text-justified">
+            In this study, we present a holistic evaluation framework to assess an agent’s proficiency in managing and responding within long-term contexts.
             <ul>
-                <li><b>Models are more inconsistent across tasks of diverse modalities.</b> Unified-IO and OFA demostrate higher inconsistency in image captioning vs. text-to-image generation than in image captioning vs. visual question answering (VQA).</li>
-                <li><b>Models are inconsistent at hard as well as easy contrast sets.</b> CoCoCON contains contrast sets of varying difficulties. While models are more consistent at easier contrast sets, the consistency is far from 100%, especially across tasks of varying modalities.</li>
-                <li><b>Larger multi-task models are more accurate as well as consistent.</b> Larger versions of Unified-IO and OFA models demonstrate higher accuracy as well as consistency on CoCoCON.</li>
-                <li><b>Models are more accurate than consistent.</b> This suggests that when models make mistakes for one task they rarely make the same kind of mistakes on the other tasks, which is what would allow a model to achieve high consistency independently of accuracy</li>
-                <li><b>Models capable of performing more tasks are more inconsistent.</b>Unified-IO models exhibit more inconsistency than OFA models that are trained to perform only a subset of the tasks comprising Unified-IO's capabilities.</li>
+              <li><b>Question Answering.</b> Agents need to “recall” past
+                context correctly to integrate relevant information
+                into future responses. We present a direct examination of their memory via a question answering
+                task. We classify questions into five distinct
+                reasoning types to evaluate memory from multiple perspectives: <i>single-hop</i>, <i>multi-hop</i>, <i>temporal</i>,
+                <i>commonsense or world knowledge</i>, and <i>adversarial</i>.</li>
+              <li><b>Event Graph Summarization.</b> Agents also need to recognize long-range causal and temporal connections in the dialogues to generate empathetic and relevant responses. We
+                propose a measurement of their causal and temporal understanding with an event graph summarization task where the event graphs
+                linked to each LLM speaker serve as the correct
+                answers, and models are tasked with extracting this
+                information from the conversation history.</li>
+              <li><b>Multi-modal Dialog Generation.</b> Conversational agents need to utilize relevant context recalled from past conversations to generate
+                responses that are consistent with the ongoing narrative. We assess this ability via the multi-modal
+                dialog generation task.</li>
             </ul>
+          </p>
         </div>
       </div>
     </div>
-    <!--/ Experiments. -->
+  </div>
+</section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Findings</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present extensive experimental results on the LoCoMo benchmark using instruction-based LLMs, long-context LLMs, and RAG techniques. Our findings include:
+            <ul>
+              <li> <b>Long-context LLMs and RAG demonstrate effectiveness in QA tasks </b>, improving ‘memory’ capabilities of LLMs (with improvements ranging
+                from 22-66%), but still significantly lag behind human levels (by 56%), especially in temporal reasoning, (by 73%);
+                </li>
+              <li><b>Long-context LLMs demonstrate significant hallucinations</b>, leading to difficulty with adversarial questions in the QA task and in the event graph summarization task.</li>
+              <li><b>RAG offers a balanced compromise</b>, combining the accuracy of short-context LLMs with the
+                extensive comprehension of wide-context LLMs, and does particularly well when dialogues are transformed into a database of assertions (observations)
+                about each speaker’s life and persona.
+                </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<!--        <iframe src="./static/images/main_figure_arxiv.pdf" style="width: 100%;height: 100%;border: none;"></iframe>-->
+      <img src="./static/images/minigpt5_results.svg" alt="Logo"/>
+<!--      <video id="teaser" autoplay muted loop playsinline height="100%">-->
+<!--        <source src="./static/images/main_figure.svg"-->
+<!--                type="image/svg+xml">-->
+<!--      </video>-->
+      <h2 class="subtitle has-text-centered">
+        <b>Multimodal dialog generation performance of MiniGPT-5</b>. (A) an example of multimodal dialog
+predicted using MiniGPT5 with and without observation as retrieved context, (B) Variation of MM-Relevance score
+with length of dialog history, and (C) comparison of RAG-based MiniGPT-5 methods.
+      </h2>
+    </div>
   </div>
 </section>
 
