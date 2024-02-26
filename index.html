@@ -1,0 +1,361 @@
+<!-- -&#45;&#45;-->
+<!--permalink: /cocon/-->
+<!-- -&#45;&#45;-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Evaluating Very Long-Term Conversational Memory of LLM Agents">
+  <meta name="keywords" content="dialog, memory, locomo, llm-agent, conversational agent">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-Task Inconsistency</title>
+
+<!--  &lt;!&ndash; Global site tag (gtag.js) - Google Analytics &ndash;&gt;-->
+<!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>-->
+<!--  <script>-->
+<!--    window.dataLayer = window.dataLayer || [];-->
+
+<!--    function gtag() {-->
+<!--      dataLayer.push(arguments);-->
+<!--    }-->
+
+<!--    gtag('js', new Date());-->
+
+<!--    gtag('config', 'G-PYVRSFMDRL');-->
+<!--  </script>-->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title">Evaluating Very Long-Term Conversational Memory of LLM Agents</h2>
+          <!-- <h3 class="title is-3">Accepted to <a href="https://jmlr.org/tmlr/">TMLR</a> 02/2024</h3> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://adymaharana.github.io/">Adyasha Maharana</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.danny-lee.info/">Dong-Ho Lee</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="http://www.stulyakov.com/">Sergey Tulyakov</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://fvancesco.github.io/">Francesco Barbieri</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yuwfan.github.io/">Yuwei Fang</a><sup>3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of North Carolina, Chapel Hill</span>
+            <span class="author-block"><sup>2</sup>University of Southern California</span>
+            <span class="author-block"><sup>3</sup>Snap Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://openreview.net/forum?id=ue9igTDLN2"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Open Review</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2303.16133"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+<!--              &lt;!&ndash; Video Link. &ndash;&gt;-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/snap-research/LoCoMo"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/snap-research/LoCoMo"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-clock"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<!--        <iframe src="./static/images/main_figure_arxiv.pdf" style="width: 100%;height: 100%;border: none;"></iframe>-->
+      <img src="./static/images/evaluation_framework.svg" alt="Logo" style="display:block;border: none;"/>
+<!--      <video id="teaser" autoplay muted loop playsinline height="100%">-->
+<!--        <source src="./static/images/main_figure.svg"-->
+<!--                type="image/svg+xml">-->
+<!--      </video>-->
+      <h2 class="subtitle has-text-centered">
+        <b>Overview of our evaluation framework.</b> We propose three tasks: question answering, event summarization and multimodal dialog generation 
+        to evaluate models' comprehension in very long-term dialogues.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing works on long-term open-domain dialogues focus on evaluating model responses
+            within contexts spanning no more than five
+            chat sessions.
+          </p>
+          <p>
+            We introduce a machine-human
+            pipeline to generate high-quality, very long-term dialogues by leveraging LLM-based agent
+            architectures and grounding their dialogues on personas and temporal event graphs. Moreover,
+            we equip each agent with the capability of sharing and reacting to images. 
+            The generated conversations are verified and edited by human annotators for long-range consistency and grounding to the event graphs. 
+            Using this pipeline, we collect LoCoMo, a dataset of very long-term conversations, each encompassing 300
+            turns and 9K tokens on avg., over up to 35 sessions.
+          </p>
+          <p>
+            Based on LOCOMO, we present a comprehensive evaluation benchmark to measure long-term memory in models, encompassing
+            question answering, event summarization, and multi-modal dialogue generation tasks. 
+            <!-- Our experimental results indicate that LLMs exhibit -->
+            <!-- challenges in understanding lengthy conversations and comprehending long-range temporal -->
+            <!-- and causal dynamics within dialogues. -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Motivation. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">How to generate <i>very</i> long-term conversations?</h2>
+        <div class="intro-figure">
+          <img src="./static/images/intro_figure_conv_only_v2.svg" alt="Intro" style="float: right; margin: 8px;"/>
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            An overview of conversations in LoCoMo is shown to the right. We create two <b>virtual agents</b>, each initialized with a
+            LLM. To start, unique <b>persona statements</b> are assigned to each agent, ensuring the integration of distinct personalities
+            into their dialogues. To mirror real-life experiences, we create a <b>temporal event graph</b> for
+            each agent, which illustrates a realistic sequence of life events. 
+            The LLM <b>agent architecture</b> is utilized for each agent,
+            enabling them to effectively memorize and reflect
+            conversation history into ongoing dialogues. Further, each agent Li can share coherent images,
+            thereby enhancing the <b>multi-modal dialogue</b> aspect. Finally, human annotators are tasked with <b>manually
+              filtering and refining</b> the generated data.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Dataset Construction</h2>
+        <div class="dataset-figure">
+          <img src="./static/images/dataset_construction.png" alt="construction" />
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+Step-by-step demonstration of the automated pipeline for generating contrast sets for <span class="dnerf">CoCoCON</span>.
+            Contrast sets generated from this pipeline for the validation split of COCO are subjected to manual
+            filtering and then used to prepare the \dataset{} benchmark.
+          </p>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <h2 class="title is-4">Examples from <span class="dnerf">CoCoCON</span> benchmark</h2>
+                <div class="dataset-figure">
+          <img src="./static/images/cococon.svg" alt="cococon" />
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            For each example, we show the relevant image (left), the ground truth caption,
+VQA question, or image generation prompt for the image with the perturbed concept in green (middle), the set of perturbations used to
+generate alternative answers and predictions from Unified-IO XL for VQA (V), image generation (G) and localization (L) (right columns). &#9989; and &#10060; indicate scenarios where the model predictions for captioning and the corresponding task for that particular contrast set are
+consistent and inconsistent respectively. ‘-’ denotes a lack of localization annotations for the given sample.
+          </p>
+        </div>
+        <!--/ Re-rendering. -->
+
+
+        <!-- Re-rendering. -->
+        <h2 class="title is-4">How to evaluate consistency between heterogeneous output modalities?</h2>
+                <div class="dataset-figure">
+          <img src="./static/images/fig1.svg" alt="evaluation" />
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            We use the unified models' likelihoods for each gold and contrast labels of each task to rank the outputs of anchor task (image captioning) and a target task (VQA, localization, text-to-image generation). If the gold outputs or contrast ouputs for both tasks are ranked higher, model is consistenct, otherwise it is inconsistent. With this method, we avoid having to compare hetergenous modalities e.g., a bounding box vs. a caption.
+          </p>
+        </div>
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Experiments. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Experiments</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We evaluate pretrained models on the COCOCON benchmark. (a) % Consistency of Unified-IO XL and OFA-HUGE
+models for varying difficulty (k) and all tasks in COCOCON, (b) % consistency (k=1) values for different sizes of Unified-IO models and
+(c) comparison of % accuracy with % consistency (k=1) values for all sizes of OFA models and our OFACon model.
+          </p>
+                <div class="experiment-figure">
+          <img src="./static/images/main_table_iccv.svg" alt="tables" />
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Experiments. -->
+
+      <!-- Findings. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Findings</h2>
+
+        <div class="content has-text-justified">
+            <ul>
+                <li><b>Models are more inconsistent across tasks of diverse modalities.</b> Unified-IO and OFA demostrate higher inconsistency in image captioning vs. text-to-image generation than in image captioning vs. visual question answering (VQA).</li>
+                <li><b>Models are inconsistent at hard as well as easy contrast sets.</b> CoCoCON contains contrast sets of varying difficulties. While models are more consistent at easier contrast sets, the consistency is far from 100%, especially across tasks of varying modalities.</li>
+                <li><b>Larger multi-task models are more accurate as well as consistent.</b> Larger versions of Unified-IO and OFA models demonstrate higher accuracy as well as consistency on CoCoCON.</li>
+                <li><b>Models are more accurate than consistent.</b> This suggests that when models make mistakes for one task they rarely make the same kind of mistakes on the other tasks, which is what would allow a model to achieve high consistency independently of accuracy</li>
+                <li><b>Models capable of performing more tasks are more inconsistent.</b>Unified-IO models exhibit more inconsistency than OFA models that are trained to perform only a subset of the tasks comprising Unified-IO's capabilities.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <!--/ Experiments. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{maharana2024lococmo,
+  author    = {Maharana, Adyasha and Lee, Dong-Ho and Tulyakov, Sergey and Bansal, Mohit and Barbieri, Francesco and Fang, Yuwei},
+  title     = {Evaluating Very Long-Term Conversational Memory of LLM Agents.},
+  journal   = {arxiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/abs/2303.16133">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/adymaharana" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website design borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
