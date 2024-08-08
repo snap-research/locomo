@@ -1,0 +1,234 @@
+[
+    {
+      "event": "discovered a new art technique",
+      "date": "10 January, 2020",
+      "id": "E1",
+      "caused_by": []
+    },
+    {
+      "event": "visited an art museum",
+      "date": "15 February, 2020",
+      "id": "E2",
+      "caused_by": []
+    },
+    {
+      "event": "started a savings account",
+      "date": "25 February, 2020",
+      "id": "E3",
+      "caused_by": []
+    },
+    {
+      "event": "earned money from a part-time job",
+      "date": "5 March, 2020",
+      "id": "E4",
+      "caused_by": [
+        "E3"
+      ]
+    },
+    {
+      "event": "attended an art workshop",
+      "date": "15 April, 2020",
+      "id": "E5",
+      "caused_by": [
+        "E1" 
+      ]
+    },
+    {
+      "event": "traveled to a new city with friends",
+      "date": "10 May, 2020",
+      "id": "E6",
+      "caused_by": []
+    },
+    {
+      "event": "created a portfolio of artwork",
+      "date": "30 June, 2020",
+      "id": "E7",
+      "caused_by": [
+        "E1",
+        "E5"
+      ]
+    },
+    {
+      "event": "went on a camping trip",
+      "date": "15 July, 2020",
+      "id": "E8",
+      "caused_by": []
+    },
+    {
+      "event": "hosted a sleepover with friends",
+      "date": "5 August, 2020",
+      "id": "E9",
+      "caused_by": []
+    },
+    {
+      "event": "took a photography class",
+      "date": "20 August, 2020",
+      "id": "E10",
+      "caused_by": []
+    },
+    {
+      "event": "started a blog to showcase artwork",
+      "date": "10 September, 2020",
+      "id": "E11",
+      "caused_by": [
+        "E7"
+      ]
+    },
+    {
+      "event": "visited a zoo",
+      "date": "25 September, 2020",
+      "id": "E12",
+      "caused_by": []
+    },
+    {
+      "event": "started a car savings plan",
+      "date": "15 October, 2020",
+      "id": "E13",
+      "caused_by": []
+    },
+    {
+      "event": "watched a movie with friends",
+      "date": "30 October, 2020",
+      "id": "E14",
+      "caused_by": []
+    },
+    {
+      "event": "visited a theme park",
+      "date": "15 November, 2020",
+      "id": "E15",
+      "caused_by": []
+    },
+    {
+      "event": "participated in an art competition",
+      "date": "5 December, 2020",
+      "id": "E16",
+      "caused_by": [
+        "E7"
+      ]
+    },
+    {
+      "event": "played a new video game",
+      "date": "10 January, 2020",
+      "id": "E17",
+      "caused_by": []
+    },
+    {
+      "event": "volunteered at an animal shelter",
+      "date": "25 January, 2020",
+      "id": "E18",
+      "caused_by": []
+    },
+    {
+      "event": "traveled to a new country",
+      "date": "15 February, 2020",
+      "id": "E19",
+      "caused_by": []
+    },
+    {
+      "event": "attended an art exhibition",
+      "date": "5 March, 2020",
+      "id": "E20",
+      "caused_by": [
+        "E2"
+      ]
+    },
+    {
+      "event": "visited a new art supply store",
+      "date": "20 March, 2020",
+      "id": "E21",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "went to a concert with friends",
+      "date": "10 April, 2020",
+      "id": "E22",
+      "caused_by": []
+    },
+    {
+      "event": "attended a painting workshop",
+      "date": "15 May, 2020",
+      "id": "E23",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "organized an art exhibition",
+      "date": "30 June, 2020",
+      "id": "E24",
+      "caused_by": [
+        "E11",
+        "E16"
+      ]
+    },
+    {
+      "event": "visited a nearby national park",
+      "date": "15 July, 2020",
+      "id": "E25",
+      "caused_by": [
+        "E8"
+      ]
+    },
+    {
+      "event": "joined a local art club",
+      "date": "5 August, 2020",
+      "id": "E26",
+      "caused_by": []
+    },
+    {
+      "event": "attended a creative writing workshop",
+      "date": "20 August, 2020",
+      "id": "E27",
+      "caused_by": []
+    },
+    {
+      "event": "visited an art gallery",
+      "date": "10 September, 2020",
+      "id": "E28",
+      "caused_by": [
+        "E20"
+      ]
+    },
+    {
+      "event": "started a new art project",
+      "date": "25 September, 2020",
+      "id": "E29",
+      "caused_by": [
+        "E1"
+      ]
+    },
+    {
+      "event": "visited a local fair",
+      "date": "15 October, 2020",
+      "id": "E30",
+      "caused_by": []
+    },
+    {
+      "event": "took a road trip with friends",
+      "date": "5 November, 2020",
+      "id": "E31",
+      "caused_by": []
+    },
+    {
+      "event": "watched a play at the theater",
+      "date": "20 November, 2020",
+      "id": "E32",
+      "caused_by": []
+    },
+    {
+      "event": "joined a local gaming community",
+      "date": "10 December, 2020",
+      "id": "E33",
+      "caused_by": []
+    },
+    {
+      "event": "hosted an art workshop for kids",
+      "date": "25 December, 2020",
+      "id": "E34",
+      "caused_by": [
+        "E5"
+      ]
+    }
+]

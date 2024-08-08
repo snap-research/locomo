@@ -1,0 +1,385 @@
+{
+  "input_prefix": "INPUT: ",
+  "output_prefix": "OUTPUT:",
+  "examples": [
+    {
+      "input": [
+        {
+          "event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with ice cream.",
+          "type": "personal relationships",
+          "sub-events": [
+            "Tom discovers that his wife Sophia is pregnant. And they celebrate with ice cream."
+          ]
+        },
+        {
+          "event": "Tom moved to a new place and become friend with Emma and Jason",
+          "type": "personal relationships",
+          "sub-events": [
+            "Tom moves to a new city.",
+            "Tom meets his neighbors Emma and Jason for the first time.",
+            "Tom invites Emma and Jason for a home-cooked meal to their new home.",
+            "Emma and Jason drop by for a friendly chat."
+         ]
+        },
+        {
+          "event": "Tom buys a new long surfboard and learns how to use long surfboard as well, since he only used short board in the past.",
+          "type": "personal experiences",
+          "sub-events": [
+            "Tom buys a new long surfboard.",
+            "Tom starts learning how to use the long surfboard.",
+            "Tom practices using the long surfboard instead of the short board he used in the past."
+          ]
+        },
+        {
+          "event": "Tom has learns how to build Ikea furnitures",
+          "type": "personal experiences",
+          "sub-events": [
+            "Tom buys a new bed from Ikea after moving to a new city.",
+            "Tom and his wife set up the Ikea bed.",
+            "Tom buys an Ikea table and couch and sets it up over the weekend."
+          ]
+        },
+        {
+          "event": "Tom is planning to organize a BBQ with his friends, and he is looking at sous vide recipes.",
+          "type": "future social activity",
+          "sub-events": [
+            "Tom plans to invite friends and host a BBQ party in their new home's backyard.",
+            "Tom decides to make sous vide recipes but he has no idea on how to make it.",
+            "Tom starts looking at sous vide recipes for the BBQ party.",
+            "Tom buys kitchen tools for helping him make sous vide recipes."
+          ]
+        },
+        {
+          "event": "Tom is planning to build a fence for his patio, and he is asking Jason who has experience with wood work.",
+          "type": "future social activity",
+          "sub-events": [
+            "Tom plans to build a fence for his patio but does not have experience with wood work.",
+            "Tom asks Jason for suggestions who then provides a list of tips and shows Tom how to do some basic woodwork.",
+            "Tom goes out to buy the necessary equipment for building the fence."
+          ]
+        },
+        {
+          "event": "Tom is planning to learn how to cook Chinese food and planning to look at Chinese cooking videos on Youtube.",
+          "type": "future non-social activity",
+          "sub-events": [
+            "Tom eats a delicious dish in a Chinese restaurant.",
+            "Tom decides to try make the Chinese dish at home and plans to learn how to cook Chinese food.",
+            "Tom starts looking at Chinese cooking videos on Youtube.",
+            "Tom makes the Chinese dish at home and has moderate success."
+          ]
+        },
+        {
+          "event": "Tom is planning to go climbing in a nearby gym when the weather will be cooler, as climbing is better with cool weather.",
+          "type": "future non-social activity",
+          "sub-events": [
+            "Tom wants to go rock-climbing in a nearby gym, but its too hot today so he does not.",
+            "It is still hot today and Tom does not feel like going to the gym for climbing.",
+            "It is a cool day and Tom decides it is the perfect weather to go climbing in the gym."
+          ]
+        },
+        {
+          "event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "type": "sports/leisure",
+          "sub-events": [
+            "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board."
+          ]
+        },
+        {
+          "event": "Tom went to Huntington Beach with his friends, including Emma's dog Marley.",
+          "type": "sports/leisure",
+          "sub-events": [
+            "Tom asks Emma and Jason if they are free to go to the beach during the weekend. They say yes.",
+            "Tom, his wife, Emma, Jason and Emma's dog Marley, drive to Huntington Beach on a Saturday morning."
+          ]
+        },
+        {
+          "event": "Tom gets promoted at work and celebrates with his friends.",
+          "type": "work/academic",
+          "sub-events": [
+            "Tom is informed that he is promoted at work.",
+            "Tom plans a big celebration with this friends.",
+            "Tom and his friends go out to celebrate his promotion."
+          ]
+        },
+        {
+          "event": "Tom has started to work with amazing interns, they are working hard and they are fun.",
+          "type": "work/academic",
+          "sub-events": [
+            "Several interns start working with Tom.",
+            "The interns are working hard and are doing well in their projects.",
+            "The interns try to have more team activities at the workplace and make it fun for others."
+          ]
+        }
+      ],
+      "output": [
+        {
+          "sub-event": "Tom moves to a new city, Santa Monica, in California.",
+          "date": "10 January, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a king sized wooden bed from Ikea.",
+          "date": "13 January, 2020",
+          "id": "E2",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom and his wife Sophia set up the wooden Ikea bed in their new home in Santa Monica.",
+          "date": "14 January, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom meets his neighbors Emma and Jason for the first time.",
+          "date": "14 January, 2020",
+          "id": "E4",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with chocolate ice cream.",
+          "date": "21 January, 2020",
+          "id": "E5",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a wooden office desk and a green couch from Ikea for the living room.",
+          "date": "23 January, 2020",
+          "id": "E6",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom cooks spaghetti and meatballs and invites Emma and Jason for the meal.",
+          "date": "25 January, 2020",
+          "id": "E7",
+          "caused_by": [
+            "E4",
+            "E6"
+          ]
+        },
+        {
+          "sub-event": "Tom eats a delicious dish - fish fillets in chili oil, in a Chinese restaurant.",
+          "date": "5 February, 2020",
+          "id": "E8",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a new long red surfboard.",
+          "date": "7 February, 2020",
+          "id": "E9",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Emma and Jason drop by for a friendly chat and spend time in Tom's living room.",
+          "date": "8 February, 2020",
+          "id": "E10",
+          "caused_by": [
+            "E7"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to build a wooden fence for his backyard patio but does not have experience with wood work.",
+          "date": "10 February, 2020",
+          "id": "E11",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom practices with the long red surfboard.",
+          "date": "12 February, 2020",
+          "id": "E12",
+          "caused_by": [
+            "E9"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Jason for help who shows him a few tools needed for building a wooden fence.",
+          "date": "15 February, 2020",
+          "id": "E13",
+          "caused_by": [
+            "E1",
+            "E11"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to try making fish fillet in chili oil at home.",
+          "date": "20 February, 2020",
+          "id": "E14",
+          "caused_by": [
+            "E8"
+          ]
+        },
+        {
+          "sub-event": "Tom buys chilli oil and schezuan peppers from an Asian supermarket to make the fish fillet dish.",
+          "date": "22 February, 2020",
+          "id": "E15",
+          "caused_by": [
+            "E8",
+            "E14"
+          ]
+        },
+        {
+          "sub-event": "Tom makes the fish fillet dish at home and has moderate success.",
+          "date": "25 February, 2020",
+          "id": "E16",
+          "caused_by": [
+            "E8",
+            "E14",
+            "E15"
+          ]
+        },
+        {
+          "sub-event": "Tom buys a power saw needed for building the fence.",
+          "date": "28 February, 2020",
+          "id": "E17",
+          "caused_by": [
+            "E11",
+            "E13"
+          ]
+        },
+        {
+          "sub-event": "Tom practices using the long red surfboard instead of the short blue surfboard he used in the past.",
+          "date": "5 March, 2020",
+          "id": "E18",
+          "caused_by": [
+            "E9",
+            "E12"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to invite friends and host a BBQ party in their new home's backyard.",
+          "date": "10 March, 2020",
+          "id": "E19",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "date": "14 March, 2020",
+          "id": "E20",
+          "caused_by": [
+            "E18"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to make sous vide recipes but he has no idea on how to make it.",
+          "date": "19 March, 2020",
+          "id": "E21",
+          "caused_by": [
+            "E19"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Emma and Jason if they are free to go to the Huntington beach during the weekend. They say yes.",
+          "date": "23 March, 2020",
+          "id": "E22",
+          "caused_by": [
+            "E10"
+          ]
+        },
+        {
+          "sub-event": "Tom finds a good sous vide recipe for the BBQ party.",
+          "date": "25 March, 2020",
+          "id": "E23",
+          "caused_by": [
+            "E19",
+            "E21"
+          ]
+        },
+        {
+          "sub-event": "Tom, his wife, Emma, Jason and Emma's dog Marley, drive to Huntington Beach on a Saturday morning.",
+          "date": "27 March, 2020",
+          "id": "E24",
+          "caused_by": [
+            "E10",
+            "E22"
+          ]
+        },
+        {
+          "sub-event": "Tom is informed that he is promoted at his workplace.",
+          "date": "1 April, 2020",
+          "id": "E25",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Several interns start working with Tom for the summer.",
+          "date": "5 April, 2020",
+          "id": "E26",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom plans a big celebration with his friends at an Italian restaurant.",
+          "date": "6 April, 2020",
+          "id": "E27",
+          "caused_by": [
+            "E25"
+          ]
+        },
+        {
+          "sub-event": "Tom wants to go rock-climbing in a nearby gym, but its too hot today so he does not.",
+          "date": "7 April, 2020",
+          "id": "E28",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys kitchen tools for helping him make sous vide recipes.",
+          "date": "9 April, 2020",
+          "id": "E29",
+          "caused_by": [
+            "E19",
+            "E21",
+            "E23"
+          ]
+        },
+        {
+          "sub-event": "Tom and his friends go out and eat Italian food to celebrate his promotion.",
+          "date": "13 April, 2020",
+          "id": "E30",
+          "caused_by": [
+            "E25",
+            "E27"
+          ]
+        },
+        {
+          "sub-event": "It is still hot today and Tom does not feel like going to the gym for climbing.",
+          "date": "15 April, 2020",
+          "id": "E31",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns are working hard, doing well in their projects and presenting their projects to the team.",
+          "date": "13 April, 2020",
+          "id": "E32",
+          "caused_by": [
+            "E26"
+          ]
+        },
+        {
+          "sub-event": "It is a cool day and Tom decides it is the perfect weather to go climbing in the gym.",
+          "date": "18 April, 2020",
+          "id": "E33",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns prank Tom at the workplace and make it fun for others.",
+          "date": "18 April, 2020",
+          "id": "E34",
+          "caused_by": [
+            "E26",
+            "E32"
+          ]
+        }
+      ]
+    }
+  ]
+}

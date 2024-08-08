@@ -1,0 +1,293 @@
+[
+    {
+      "event": "befriended a squirrel at a park",
+      "date": "10 January, 2020",
+      "id": "E1",
+      "caused_by": []
+    },
+    {
+      "event": "started going to park everyday to meet squirrel friend",
+      "date": "20 January, 2020",
+      "id": "E2",
+      "caused_by": [
+        "E1"
+      ]
+    },
+    {
+      "event": "joined a book club",
+      "date": "5 February, 2020",
+      "id": "E3",
+      "caused_by": []
+    },
+    {
+      "event": "signed up for an outdoor yoga class",
+      "date": "10 March, 2020",
+      "id": "E4",
+      "caused_by": [
+        "E2"
+      ]
+    },
+    {
+      "event": "went on a road trip",
+      "date": "22 April, 2020",
+      "id": "E5",
+      "caused_by": []
+    },
+    {
+      "event": "started a vegetable garden",
+      "date": "10 May, 2020",
+      "id": "E6",
+      "caused_by": []
+    },
+    {
+      "event": "harvested tomatoes",
+      "date": "19 August, 2020",
+      "id": "E7",
+      "caused_by": [
+        "E6"
+      ]
+    },
+    {
+      "event": "planned a holiday",
+      "date": "28 April, 2020",
+      "id": "E8",
+      "caused_by": []
+    },
+    {
+      "event": "bought new hiking shoes",
+      "date": "7 May, 2020",
+      "id": "E9",
+      "caused_by": [
+        "E8"
+      ]
+    },
+    {
+        "event": "attended a cooking class",
+        "date": "30 September, 2020",
+        "id": "E10",
+        "caused_by": []
+    },
+    {
+      "event": "went on a hiking trip",
+      "date": "4 July, 2020",
+      "id": "E11",
+      "caused_by": [
+        "E8", "E9"
+      ]
+    },
+    {
+      "event": "watched a movie with family",
+      "date": "30 August, 2020",
+      "id": "E12",
+      "caused_by": []
+    },
+    {
+      "event": "went to the beach with friends",
+      "date": "1 October, 2020",
+      "id": "E13",
+      "caused_by": []
+    },
+    {
+      "event": "built a treehouse",
+      "date": "15 November, 2020",
+      "id": "E14",
+      "caused_by": []
+    },
+    {
+      "event": "cooked a new recipe",
+      "date": "5 October, 2020",
+      "id": "E17",
+      "caused_by": [
+        "E10"
+    ]
+    },
+    {
+      "event": "took a pottery class",
+      "date": "25 November, 2020",
+      "id": "E19",
+      "caused_by": []
+    },
+    {
+      "event": "read a new book",
+      "date": "15 August, 2020",
+      "id": "E20",
+      "caused_by": []
+    },
+    {
+      "event": "attended a family reunion",
+      "date": "25 July, 2020",
+      "id": "E21",
+      "caused_by": []
+    },
+    {
+      "event": "earned a certificate in web development",
+      "date": "15 April, 2020",
+      "id": "E23",
+      "caused_by": []
+    },
+    {
+      "event": "took a walk in the park",
+      "date": "30 October, 2020",
+      "id": "E24",
+      "caused_by": [
+        "E2"
+      ]
+    },
+    {
+      "event": "baked a cake",
+      "date": "30 November, 2020",
+      "id": "E26",
+      "caused_by": [
+        "E10"
+      ]
+    },
+    {
+      "event": "took a painting class",
+      "date": "5 October, 2020",
+      "id": "E27",
+      "caused_by": []
+    },
+    {
+      "event": "visited a nearby town",
+      "date": "20 October, 2020",
+      "id": "E28",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "adopted a puppy from the local shelter",
+      "date": "1 November, 2020",
+      "id": "E29",
+      "caused_by": []
+    },
+    {
+      "event": "went shopping for gardening tools",
+      "date": "15 June, 2020",
+      "id": "E30",
+      "caused_by": [
+        "E6"
+      ]
+    },
+    {
+      "event": "took a bike ride around town",
+      "date": "25 October, 2020",
+      "id": "E31",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "attended a wine tasting event",
+      "date": "10 October, 2020",
+      "id": "E33",
+      "caused_by": []
+    },
+    {
+      "event": "bought new gardening tools",
+      "date": "7 July, 2020",
+      "id": "E34",
+      "caused_by": [
+        "E6"
+      ]
+    },
+    {
+      "event": "harvested potatoes",
+      "date": "20 October, 2020",
+      "id": "E35",
+      "caused_by": [
+        "E6"
+      ]
+    },
+    {
+      "event": "bought a birdhouse",
+      "date": "7 August, 2020",
+      "id": "E36",
+      "caused_by": [
+        "E6"
+      ]
+    },
+    {
+      "event": "planned a camping trip",
+      "date": "7 December, 2020",
+      "id": "E37",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "attended a local festival",
+      "date": "20 November, 2020",
+      "id": "E38",
+      "caused_by": []
+    },
+    {
+      "event": "took a walk with puppy",
+      "date": "10 December, 2020",
+      "id": "E40",
+      "caused_by": [
+        "E29"
+      ]
+    },
+    {
+      "event": "took a train ride to a nearby town",
+      "date": "15 October, 2020",
+      "id": "E41",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "ate breakfast with family",
+      "date": "20 January, 2020",
+      "id": "E42",
+      "caused_by": []
+    },
+    {
+      "event": "tried a new recipe",
+      "date": "25 October, 2020",
+      "id": "E43",
+      "caused_by": [
+        "E10",
+        "E17"
+      ]
+    },
+    {
+      "event": "attended a painting exhibition",
+      "date": "10 December, 2020",
+      "id": "E44",
+      "caused_by": [
+        "E27"
+      ]
+    },
+    {
+      "event": "attended an art gallery",
+      "date": "30 November, 2020",
+      "id": "E45",
+      "caused_by": []
+    },
+    {
+      "event": "attended an art lecture",
+      "date": "5 December, 2020",
+      "id": "E46",
+      "caused_by": [
+        "E45"
+      ]
+    },
+    {
+      "event": "visited a nearby lake",
+      "date": "30 October, 2020",
+      "id": "E47",
+      "caused_by": [
+        "E5"
+      ]
+    },
+    {
+      "event": "attended a online course on gardening",
+      "date": "30 August, 2020",
+      "id": "E49",
+      "caused_by": [
+        "E6"
+      ]
+    }
+  ]

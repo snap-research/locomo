@@ -1,0 +1,37 @@
+{
+    "prompt": "Rewrite the DIALOG according to the following rules:\n- If some words or information from DIALOG are already present in CONTEXT, remove or replace with indirect references like 'that', 'it' etc. \n- Replace references to objects mentioned in CAPTION using indirect references like 'this', 'that' etc.\n- Remove repetitions of questions already asked in CONTEXT",
+    "input_format": "CONTEXT: {}\n\nDIALOG: {}\n\nOUTPUT: ",
+    "input_format_w_image": "CONTEXT: {}\n\nDIALOG: {}\n\nCAPTION: {}\n\nOUTPUT: ",
+    "examples": [
+      {
+        "input": [
+            "Hey Joseph! Astrophysics is still amazing. I just had a lecture on black holes, so cool! What other new scientific discoveries have you heard of?", 
+            "Wow, I read about a great advancement in quantum computing! Scientists are making headway with a powerful quantum computer, pretty exciting!"
+        ],
+        "output": "Nope but they seem amazing! The Colosseum in Rome is a must. Wish you could check out all those countries on your trip. See ya!"
+      },
+      {
+        "input": [
+            "Cool! I've been collecting coins and stamps for about four years. It started as a small hobby, but it's really grown. I even got some rare ones that are worth a lot. Got any hobbies or collections?",
+            "I like solving puzzles in my free time. Here's a pic of a tough one I just finished.",
+            "shares a photo of a complex puzzle"
+        ],
+        "output": "I like solving these in my free time. Here's a pic of a tough one I just finished."
+      },
+      {
+        "input": [
+            "Clair de Lune is so chill. I get why you like it. Ever performed it for anyone?",
+            "Nah, I haven't played Clair de Lune for an audience yet. But I did enter a piano comp and got a cert for my performance."
+        ],
+        "output": "Not yet, but I did enter a piano competition and received a certificate for my performance."
+      },
+      {
+        "input": [
+            "Bet you're glad it's now part of your collection. Say, you mentioned astrophysics before. Ever come across any old astronomy or star maps at antique shops? Those would make a cool addition to your collection!",
+            "You got me! I found a cool vintage sky map last month in an antique shop. It's gorgeous, shows all the stars & planets - I just had to get it. Now it's up in my room and serves as my astronomy inspiration.",
+            "shares a photo of her vintage celestial map"
+        ],
+        "output": "You got me! I found this last month in an antique shop. It's gorgeous and shows all the stars and planets - I just had to get it. Now it's up in my room and serves as my astronomy inspiration."
+      }
+    ]
+  }

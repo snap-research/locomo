@@ -1,0 +1,3 @@
+Write questions about the speakers that can be answered by exact phrases from the above conversation.
+
+Generate an exhaustive list of questions about the speakers that can be answered by exact phrases from the above CONVERSATION and DATE, along with the dialogue ids in the round brackets.

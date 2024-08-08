@@ -1,0 +1,59 @@
+{
+  "input_prefix": "PERSONA: ",
+  "output_prefix": "",
+  "examples": [
+    {
+      "input": "Tom is a 36 year old male Computer Scientist, who is dynamic and creative. He is married to Sophia. He likes outside activities like surfing, climbing and hiking. He likes to cook italian dishes, including focaccia and pasta, and he often cook for his friends. He has a good number of friends and some of them are neighbors, like Emma and Jason. He wakes up early in the morning to do some sport activities. His goals and plans are to become a dad since his wife is pregnant, save up to buy a mansion, and buy kitchen gadgets. He likes his neighbor dogs, but he would not have one for himself.",
+      "output": [
+        {
+          "event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with ice cream.",
+          "type": "personal relationships"
+        },
+        {
+          "event": "Tom moved to a new place and become friend with Emma and Jason",
+          "type": "personal relationships"
+        },
+        {
+          "event": "Tom buys a new long surfboard and learns how to use long surfboard as well, since he only used short board in the past.",
+          "type": "personal experiences"
+        },
+        {
+          "event": "Tom has learns how to build Ikea furnitures",
+          "type": "personal experiences"
+        },
+        {
+          "event": "Tom is planning to organize a BBQ with his friends, and he is looking at sous vide recipes.",
+          "type": "future social activity"
+        },
+        {
+          "event": "Tom is planning to build a fence for his patio, and he is asking Jason who has experience with wood work.",
+          "type": "future social activity"
+        },
+        {
+          "event": "Tom is planning to learn how to cook Chinese food and planning to look at Chinese cooking videos on Youtube.",
+          "type": "future non-social activity"
+        },
+        {
+          "event": "Tom is planning to go climbing in a nearby gym when the weather will be cooler, as climbing is better with cool weather.",
+          "type": "future non-social activity"
+        },
+        {
+          "event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "type": "sports/leisure"
+        },
+        {
+          "event": "Tom went to Huntington Beach with his friends, including Emma's dog Marley.",
+          "type": "sports/leisure"
+        },
+        {
+          "event": "Tom gets promoted at work and celebrates with his friends.",
+          "type": "work/academic"
+        },
+        {
+          "event": "Tom has started to work with amazing interns, they are working hard and they are fun.",
+          "type": "work/academic"
+        }
+      ]
+    }
+  ]
+}

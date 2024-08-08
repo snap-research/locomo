@@ -1,0 +1,944 @@
+Let's write a graph representing sub-events that occur in a person's life based on a short summary of their personality. Nodes represent sub-events and edges represent the influence of past sub-events on a current sub-event.
+- The graph is represented in the form of a json list. 
+- Each entry is a dictionary containing the following keys: "sub-event", "time", "caused_by", "id". 
+- The "sub-event" field contains a short description of the sub-event. 
+- The "time" field contains a date.
+- The "id" field contains a unique identifier for the sub-event.
+- The "caused_by" field represents edges and is a list of "id" of existing sub-events that have caused this sub-event. Sub-events in the "caused_by" field should occur on dates before the sub-event they have caused. Generate as many causal connections as possible.
+- An example of a causal effect is when the sub-event "started a vegetable garden" causes "harvested tomatoes".
+- Sub-events should contain visual details such as "bought a red scarf" or "played tennis".
+- Sub-events can be good or bad.
+
+For example,
+
+INPUT: Tom is a 36 year old male Computer Scientist, who is dynamic and creative. He is married to Sophia. He likes outside activities like surfing, climbing and hiking. He likes to cook italian dishes, including focaccia and pasta, and he often cook for his friends. He has a good number of friends and some of them are neighbors, like Emma and Jason. He wakes up early in the morning to do some sport activities. His goals and plans are to become a dad since his wife is pregnant, save up to buy a mansion, and buy kitchen gadgets. He likes his neighbor dogs, but he would not have one for himself.
+
+OUTPUT: [
+        {
+          "sub-event": "Tom moves to a new city, Santa Monica, in California.",
+          "date": "10 January, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a king sized wooden bed from Ikea.",
+          "date": "13 January, 2020",
+          "id": "E2",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom and his wife Sophia set up the wooden Ikea bed in their new home in Santa Monica.",
+          "date": "14 January, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom meets his neighbors Emma and Jason for the first time.",
+          "date": "14 January, 2020",
+          "id": "E4",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with chocolate ice cream.",
+          "date": "21 January, 2020",
+          "id": "E5",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a wooden office desk and a green couch from Ikea for the living room.",
+          "date": "23 January, 2020",
+          "id": "E6",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom cooks spaghetti and meatballs and invites Emma and Jason for the meal.",
+          "date": "25 January, 2020",
+          "id": "E7",
+          "caused_by": [
+            "E4",
+            "E6"
+          ]
+        },
+        {
+          "sub-event": "Tom eats a delicious dish - fish fillets in chili oil, in a Chinese restaurant.",
+          "date": "5 February, 2020",
+          "id": "E8",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a new long red surfboard.",
+          "date": "7 February, 2020",
+          "id": "E9",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Emma and Jason drop by for a friendly chat and spend time in Tom's living room.",
+          "date": "8 February, 2020",
+          "id": "E10",
+          "caused_by": [
+            "E7"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to build a wooden fence for his backyard patio but does not have experience with wood work.",
+          "date": "10 February, 2020",
+          "id": "E11",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom practices with the long red surfboard.",
+          "date": "12 February, 2020",
+          "id": "E12",
+          "caused_by": [
+            "E9"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Jason for help who shows him a few tools needed for building a wooden fence.",
+          "date": "15 February, 2020",
+          "id": "E13",
+          "caused_by": [
+            "E1",
+            "E11"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to try making fish fillet in chili oil at home.",
+          "date": "20 February, 2020",
+          "id": "E14",
+          "caused_by": [
+            "E8"
+          ]
+        },
+        {
+          "sub-event": "Tom buys chilli oil and schezuan peppers from an Asian supermarket to make the fish fillet dish.",
+          "date": "22 February, 2020",
+          "id": "E15",
+          "caused_by": [
+            "E8",
+            "E14"
+          ]
+        },
+        {
+          "sub-event": "Tom makes the fish fillet dish at home and has moderate success.",
+          "date": "25 February, 2020",
+          "id": "E16",
+          "caused_by": [
+            "E8",
+            "E14",
+            "E15"
+          ]
+        },
+        {
+          "sub-event": "Tom buys a power saw needed for building the fence.",
+          "date": "28 February, 2020",
+          "id": "E17",
+          "caused_by": [
+            "E11",
+            "E13"
+          ]
+        },
+        {
+          "sub-event": "Tom practices using the long red surfboard instead of the short blue surfboard he used in the past.",
+          "date": "5 March, 2020",
+          "id": "E18",
+          "caused_by": [
+            "E9",
+            "E12"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to invite friends and host a BBQ party in their new home's backyard.",
+          "date": "10 March, 2020",
+          "id": "E19",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "date": "14 March, 2020",
+          "id": "E20",
+          "caused_by": [
+            "E18"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to make sous vide recipes but he has no idea on how to make it.",
+          "date": "19 March, 2020",
+          "id": "E21",
+          "caused_by": [
+            "E19"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Emma and Jason if they are free to go to the Huntington beach during the weekend. They say yes.",
+          "date": "23 March, 2020",
+          "id": "E22",
+          "caused_by": [
+            "E10"
+          ]
+        },
+        {
+          "sub-event": "Tom finds a good sous vide recipe for the BBQ party.",
+          "date": "25 March, 2020",
+          "id": "E23",
+          "caused_by": [
+            "E19",
+            "E21"
+          ]
+        },
+        {
+          "sub-event": "Tom, his wife, Emma, Jason and Emma's dog Marley, drive to Huntington Beach on a Saturday morning.",
+          "date": "27 March, 2020",
+          "id": "E24",
+          "caused_by": [
+            "E10",
+            "E22"
+          ]
+        },
+        {
+          "sub-event": "Tom is informed that he is promoted at his workplace.",
+          "date": "1 April, 2020",
+          "id": "E25",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Several interns start working with Tom for the summer.",
+          "date": "5 April, 2020",
+          "id": "E26",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom plans a big celebration with his friends at an Italian restaurant.",
+          "date": "6 April, 2020",
+          "id": "E27",
+          "caused_by": [
+            "E25"
+          ]
+        },
+        {
+          "sub-event": "Tom wants to go rock-climbing in a nearby gym, but its too hot today so he does not.",
+          "date": "7 April, 2020",
+          "id": "E28",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys kitchen tools for helping him make sous vide recipes.",
+          "date": "9 April, 2020",
+          "id": "E29",
+          "caused_by": [
+            "E19",
+            "E21",
+            "E23"
+          ]
+        },
+        {
+          "sub-event": "Tom and his friends go out and eat Italian food to celebrate his promotion.",
+          "date": "13 April, 2020",
+          "id": "E30",
+          "caused_by": [
+            "E25",
+            "E27"
+          ]
+        },
+        {
+          "sub-event": "It is still hot today and Tom does not feel like going to the gym for climbing.",
+          "date": "15 April, 2020",
+          "id": "E31",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns are working hard, doing well in their projects and presenting their projects to the team.",
+          "date": "13 April, 2020",
+          "id": "E32",
+          "caused_by": [
+            "E26"
+          ]
+        },
+        {
+          "sub-event": "It is a cool day and Tom decides it is the perfect weather to go climbing in the gym.",
+          "date": "18 April, 2020",
+          "id": "E33",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns prank Tom at the workplace and make it fun for others.",
+          "date": "18 April, 2020",
+          "id": "E34",
+          "caused_by": [
+            "E26",
+            "E32"
+          ]
+        }
+      ]
+
+For the given personality, generate four independent events aligned with their personality. Start and end your answer with a square bracket.
+INPUT: Brian is a 25 year old male who loves animals and the outdoors. He enjoys visiting farms and petting zoos, and even volunteers at a pet shelter whenever he can. He likes to listen to country music, and he also runs a vegan newsletter. Although he loves both dogs and pigs, he has never been able to keep one himself as a pet, but he does have a fish living in his apartment. He loves to collect different plant-based food recipes, and he often shares delicious vegan options with his family and friends.
+OUTPUT: 
+
+
+Let's write a graph representing sub-events that occur in a person's life based on a short summary of their personality. Nodes represent sub-events and edges represent the influence of past sub-events on a current sub-event.
+- The graph is represented in the form of a json list. 
+- Each entry is a dictionary containing the following keys: "sub-event", "time", "caused_by", "id". 
+- The "sub-event" field contains a short description of the sub-event. 
+- The "time" field contains a date.
+- The "id" field contains a unique identifier for the sub-event.
+- The "caused_by" field represents edges and is a list of "id" of existing sub-events that have caused this sub-event. Sub-events in the "caused_by" field should occur on dates before the sub-event they have caused. Generate as many causal connections as possible.
+- An example of a causal effect is when the sub-event "started a vegetable garden" causes "harvested tomatoes".
+- Sub-events should contain visual details such as "bought a red scarf" or "played tennis".
+- Sub-events can be good or bad.
+
+For example,
+
+INPUT: Tom is a 36 year old male Computer Scientist, who is dynamic and creative. He is married to Sophia. He likes outside activities like surfing, climbing and hiking. He likes to cook italian dishes, including focaccia and pasta, and he often cook for his friends. He has a good number of friends and some of them are neighbors, like Emma and Jason. He wakes up early in the morning to do some sport activities. His goals and plans are to become a dad since his wife is pregnant, save up to buy a mansion, and buy kitchen gadgets. He likes his neighbor dogs, but he would not have one for himself.
+
+OUTPUT: [
+        {
+          "sub-event": "Tom moves to a new city, Santa Monica, in California.",
+          "date": "10 January, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a king sized wooden bed from Ikea.",
+          "date": "13 January, 2020",
+          "id": "E2",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom and his wife Sophia set up the wooden Ikea bed in their new home in Santa Monica.",
+          "date": "14 January, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom meets his neighbors Emma and Jason for the first time.",
+          "date": "14 January, 2020",
+          "id": "E4",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with chocolate ice cream.",
+          "date": "21 January, 2020",
+          "id": "E5",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a wooden office desk and a green couch from Ikea for the living room.",
+          "date": "23 January, 2020",
+          "id": "E6",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom cooks spaghetti and meatballs and invites Emma and Jason for the meal.",
+          "date": "25 January, 2020",
+          "id": "E7",
+          "caused_by": [
+            "E4",
+            "E6"
+          ]
+        },
+        {
+          "sub-event": "Tom eats a delicious dish - fish fillets in chili oil, in a Chinese restaurant.",
+          "date": "5 February, 2020",
+          "id": "E8",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a new long red surfboard.",
+          "date": "7 February, 2020",
+          "id": "E9",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Emma and Jason drop by for a friendly chat and spend time in Tom's living room.",
+          "date": "8 February, 2020",
+          "id": "E10",
+          "caused_by": [
+            "E7"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to build a wooden fence for his backyard patio but does not have experience with wood work.",
+          "date": "10 February, 2020",
+          "id": "E11",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom practices with the long red surfboard.",
+          "date": "12 February, 2020",
+          "id": "E12",
+          "caused_by": [
+            "E9"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Jason for help who shows him a few tools needed for building a wooden fence.",
+          "date": "15 February, 2020",
+          "id": "E13",
+          "caused_by": [
+            "E1",
+            "E11"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to try making fish fillet in chili oil at home.",
+          "date": "20 February, 2020",
+          "id": "E14",
+          "caused_by": [
+            "E8"
+          ]
+        },
+        {
+          "sub-event": "Tom buys chilli oil and schezuan peppers from an Asian supermarket to make the fish fillet dish.",
+          "date": "22 February, 2020",
+          "id": "E15",
+          "caused_by": [
+            "E8",
+            "E14"
+          ]
+        },
+        {
+          "sub-event": "Tom makes the fish fillet dish at home and has moderate success.",
+          "date": "25 February, 2020",
+          "id": "E16",
+          "caused_by": [
+            "E8",
+            "E14",
+            "E15"
+          ]
+        },
+        {
+          "sub-event": "Tom buys a power saw needed for building the fence.",
+          "date": "28 February, 2020",
+          "id": "E17",
+          "caused_by": [
+            "E11",
+            "E13"
+          ]
+        },
+        {
+          "sub-event": "Tom practices using the long red surfboard instead of the short blue surfboard he used in the past.",
+          "date": "5 March, 2020",
+          "id": "E18",
+          "caused_by": [
+            "E9",
+            "E12"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to invite friends and host a BBQ party in their new home's backyard.",
+          "date": "10 March, 2020",
+          "id": "E19",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "date": "14 March, 2020",
+          "id": "E20",
+          "caused_by": [
+            "E18"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to make sous vide recipes but he has no idea on how to make it.",
+          "date": "19 March, 2020",
+          "id": "E21",
+          "caused_by": [
+            "E19"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Emma and Jason if they are free to go to the Huntington beach during the weekend. They say yes.",
+          "date": "23 March, 2020",
+          "id": "E22",
+          "caused_by": [
+            "E10"
+          ]
+        },
+        {
+          "sub-event": "Tom finds a good sous vide recipe for the BBQ party.",
+          "date": "25 March, 2020",
+          "id": "E23",
+          "caused_by": [
+            "E19",
+            "E21"
+          ]
+        },
+        {
+          "sub-event": "Tom, his wife, Emma, Jason and Emma's dog Marley, drive to Huntington Beach on a Saturday morning.",
+          "date": "27 March, 2020",
+          "id": "E24",
+          "caused_by": [
+            "E10",
+            "E22"
+          ]
+        },
+        {
+          "sub-event": "Tom is informed that he is promoted at his workplace.",
+          "date": "1 April, 2020",
+          "id": "E25",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Several interns start working with Tom for the summer.",
+          "date": "5 April, 2020",
+          "id": "E26",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom plans a big celebration with his friends at an Italian restaurant.",
+          "date": "6 April, 2020",
+          "id": "E27",
+          "caused_by": [
+            "E25"
+          ]
+        },
+        {
+          "sub-event": "Tom wants to go rock-climbing in a nearby gym, but its too hot today so he does not.",
+          "date": "7 April, 2020",
+          "id": "E28",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys kitchen tools for helping him make sous vide recipes.",
+          "date": "9 April, 2020",
+          "id": "E29",
+          "caused_by": [
+            "E19",
+            "E21",
+            "E23"
+          ]
+        },
+        {
+          "sub-event": "Tom and his friends go out and eat Italian food to celebrate his promotion.",
+          "date": "13 April, 2020",
+          "id": "E30",
+          "caused_by": [
+            "E25",
+            "E27"
+          ]
+        },
+        {
+          "sub-event": "It is still hot today and Tom does not feel like going to the gym for climbing.",
+          "date": "15 April, 2020",
+          "id": "E31",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns are working hard, doing well in their projects and presenting their projects to the team.",
+          "date": "13 April, 2020",
+          "id": "E32",
+          "caused_by": [
+            "E26"
+          ]
+        },
+        {
+          "sub-event": "It is a cool day and Tom decides it is the perfect weather to go climbing in the gym.",
+          "date": "18 April, 2020",
+          "id": "E33",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns prank Tom at the workplace and make it fun for others.",
+          "date": "18 April, 2020",
+          "id": "E34",
+          "caused_by": [
+            "E26",
+            "E32"
+          ]
+        }
+      ]
+
+For the given personality, continue generating sub-events E5, E6, E7 and E8 that are caused by one or more EXISTING sub-events E1, E2, E3 and E4. Start and end your answer with a square bracket.
+INPUT: Brian is a 25 year old male who loves animals and the outdoors. He enjoys visiting farms and petting zoos, and even volunteers at a pet shelter whenever he can. He likes to listen to country music, and he also runs a vegan newsletter. Although he loves both dogs and pigs, he has never been able to keep one himself as a pet, but he does have a fish living in his apartment. He loves to collect different plant-based food recipes, and he often shares delicious vegan options with his family and friends.
+EXISTING: [
+        {
+          "sub-event": "Brian visits a local farm and gets to pet a variety of animals including goats, cows, and chickens.",
+          "date": "10 March, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian volunteers at a pet shelter and helps take care of the cats and dogs by feeding them and cleaning their cages.",
+          "date": "15 March, 2020",
+          "id": "E2",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian attends a country music concert and enjoys dancing and singing along to his favorite songs.",
+          "date": "20 March, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian discovers a new delicious vegan recipe for a lentil burger and tries it out for dinner.",
+          "date": "25 March, 2020",
+          "id": "E4",
+          "caused_by": []
+        }
+      ]
+OUTPUT: 
+
+
+Let's write a graph representing sub-events that occur in a person's life based on a short summary of their personality. Nodes represent sub-events and edges represent the influence of past sub-events on a current sub-event.
+- The graph is represented in the form of a json list. 
+- Each entry is a dictionary containing the following keys: "sub-event", "time", "caused_by", "id". 
+- The "sub-event" field contains a short description of the sub-event. 
+- The "time" field contains a date.
+- The "id" field contains a unique identifier for the sub-event.
+- The "caused_by" field represents edges and is a list of "id" of existing sub-events that have caused this sub-event. Sub-events in the "caused_by" field should occur on dates before the sub-event they have caused. Generate as many causal connections as possible.
+- An example of a causal effect is when the sub-event "started a vegetable garden" causes "harvested tomatoes".
+- Sub-events should contain visual details such as "bought a red scarf" or "played tennis".
+- Sub-events can be good or bad.
+
+For example,
+
+INPUT: Tom is a 36 year old male Computer Scientist, who is dynamic and creative. He is married to Sophia. He likes outside activities like surfing, climbing and hiking. He likes to cook italian dishes, including focaccia and pasta, and he often cook for his friends. He has a good number of friends and some of them are neighbors, like Emma and Jason. He wakes up early in the morning to do some sport activities. His goals and plans are to become a dad since his wife is pregnant, save up to buy a mansion, and buy kitchen gadgets. He likes his neighbor dogs, but he would not have one for himself.
+
+OUTPUT: [
+        {
+          "sub-event": "Tom moves to a new city, Santa Monica, in California.",
+          "date": "10 January, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a king sized wooden bed from Ikea.",
+          "date": "13 January, 2020",
+          "id": "E2",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom and his wife Sophia set up the wooden Ikea bed in their new home in Santa Monica.",
+          "date": "14 January, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom meets his neighbors Emma and Jason for the first time.",
+          "date": "14 January, 2020",
+          "id": "E4",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom discovers that his wife Sophia is pregnant. And they celebrate with chocolate ice cream.",
+          "date": "21 January, 2020",
+          "id": "E5",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a wooden office desk and a green couch from Ikea for the living room.",
+          "date": "23 January, 2020",
+          "id": "E6",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom cooks spaghetti and meatballs and invites Emma and Jason for the meal.",
+          "date": "25 January, 2020",
+          "id": "E7",
+          "caused_by": [
+            "E4",
+            "E6"
+          ]
+        },
+        {
+          "sub-event": "Tom eats a delicious dish - fish fillets in chili oil, in a Chinese restaurant.",
+          "date": "5 February, 2020",
+          "id": "E8",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys a new long red surfboard.",
+          "date": "7 February, 2020",
+          "id": "E9",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Emma and Jason drop by for a friendly chat and spend time in Tom's living room.",
+          "date": "8 February, 2020",
+          "id": "E10",
+          "caused_by": [
+            "E7"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to build a wooden fence for his backyard patio but does not have experience with wood work.",
+          "date": "10 February, 2020",
+          "id": "E11",
+          "caused_by": [
+            "E1"
+          ]
+        },
+        {
+          "sub-event": "Tom practices with the long red surfboard.",
+          "date": "12 February, 2020",
+          "id": "E12",
+          "caused_by": [
+            "E9"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Jason for help who shows him a few tools needed for building a wooden fence.",
+          "date": "15 February, 2020",
+          "id": "E13",
+          "caused_by": [
+            "E1",
+            "E11"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to try making fish fillet in chili oil at home.",
+          "date": "20 February, 2020",
+          "id": "E14",
+          "caused_by": [
+            "E8"
+          ]
+        },
+        {
+          "sub-event": "Tom buys chilli oil and schezuan peppers from an Asian supermarket to make the fish fillet dish.",
+          "date": "22 February, 2020",
+          "id": "E15",
+          "caused_by": [
+            "E8",
+            "E14"
+          ]
+        },
+        {
+          "sub-event": "Tom makes the fish fillet dish at home and has moderate success.",
+          "date": "25 February, 2020",
+          "id": "E16",
+          "caused_by": [
+            "E8",
+            "E14",
+            "E15"
+          ]
+        },
+        {
+          "sub-event": "Tom buys a power saw needed for building the fence.",
+          "date": "28 February, 2020",
+          "id": "E17",
+          "caused_by": [
+            "E11",
+            "E13"
+          ]
+        },
+        {
+          "sub-event": "Tom practices using the long red surfboard instead of the short blue surfboard he used in the past.",
+          "date": "5 March, 2020",
+          "id": "E18",
+          "caused_by": [
+            "E9",
+            "E12"
+          ]
+        },
+        {
+          "sub-event": "Tom plans to invite friends and host a BBQ party in their new home's backyard.",
+          "date": "10 March, 2020",
+          "id": "E19",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom goes surfing in Malibu and the waves are big. He injures his ribs hitting the surf board.",
+          "date": "14 March, 2020",
+          "id": "E20",
+          "caused_by": [
+            "E18"
+          ]
+        },
+        {
+          "sub-event": "Tom decides to make sous vide recipes but he has no idea on how to make it.",
+          "date": "19 March, 2020",
+          "id": "E21",
+          "caused_by": [
+            "E19"
+          ]
+        },
+        {
+          "sub-event": "Tom asks Emma and Jason if they are free to go to the Huntington beach during the weekend. They say yes.",
+          "date": "23 March, 2020",
+          "id": "E22",
+          "caused_by": [
+            "E10"
+          ]
+        },
+        {
+          "sub-event": "Tom finds a good sous vide recipe for the BBQ party.",
+          "date": "25 March, 2020",
+          "id": "E23",
+          "caused_by": [
+            "E19",
+            "E21"
+          ]
+        },
+        {
+          "sub-event": "Tom, his wife, Emma, Jason and Emma's dog Marley, drive to Huntington Beach on a Saturday morning.",
+          "date": "27 March, 2020",
+          "id": "E24",
+          "caused_by": [
+            "E10",
+            "E22"
+          ]
+        },
+        {
+          "sub-event": "Tom is informed that he is promoted at his workplace.",
+          "date": "1 April, 2020",
+          "id": "E25",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Several interns start working with Tom for the summer.",
+          "date": "5 April, 2020",
+          "id": "E26",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom plans a big celebration with his friends at an Italian restaurant.",
+          "date": "6 April, 2020",
+          "id": "E27",
+          "caused_by": [
+            "E25"
+          ]
+        },
+        {
+          "sub-event": "Tom wants to go rock-climbing in a nearby gym, but its too hot today so he does not.",
+          "date": "7 April, 2020",
+          "id": "E28",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Tom buys kitchen tools for helping him make sous vide recipes.",
+          "date": "9 April, 2020",
+          "id": "E29",
+          "caused_by": [
+            "E19",
+            "E21",
+            "E23"
+          ]
+        },
+        {
+          "sub-event": "Tom and his friends go out and eat Italian food to celebrate his promotion.",
+          "date": "13 April, 2020",
+          "id": "E30",
+          "caused_by": [
+            "E25",
+            "E27"
+          ]
+        },
+        {
+          "sub-event": "It is still hot today and Tom does not feel like going to the gym for climbing.",
+          "date": "15 April, 2020",
+          "id": "E31",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns are working hard, doing well in their projects and presenting their projects to the team.",
+          "date": "13 April, 2020",
+          "id": "E32",
+          "caused_by": [
+            "E26"
+          ]
+        },
+        {
+          "sub-event": "It is a cool day and Tom decides it is the perfect weather to go climbing in the gym.",
+          "date": "18 April, 2020",
+          "id": "E33",
+          "caused_by": [
+            "E28"
+          ]
+        },
+        {
+          "sub-event": "The interns prank Tom at the workplace and make it fun for others.",
+          "date": "18 April, 2020",
+          "id": "E34",
+          "caused_by": [
+            "E26",
+            "E32"
+          ]
+        }
+      ]
+
+For the given personality, generate sub-events E9, E10, E11 and E12 that are caused by one or more EXISTING sub-events. Start and end your answer with a square bracket.
+INPUT: Brian is a 25 year old male who loves animals and the outdoors. He enjoys visiting farms and petting zoos, and even volunteers at a pet shelter whenever he can. He likes to listen to country music, and he also runs a vegan newsletter. Although he loves both dogs and pigs, he has never been able to keep one himself as a pet, but he does have a fish living in his apartment. He loves to collect different plant-based food recipes, and he often shares delicious vegan options with his family and friends.
+EXISTING: [
+        {
+          "sub-event": "Brian visits a local farm and gets to pet a variety of animals including goats, cows, and chickens.",
+          "date": "10 March, 2020",
+          "id": "E1",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian volunteers at a pet shelter and helps take care of the cats and dogs by feeding them and cleaning their cages.",
+          "date": "15 March, 2020",
+          "id": "E2",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian attends a country music concert and enjoys dancing and singing along to his favorite songs.",
+          "date": "20 March, 2020",
+          "id": "E3",
+          "caused_by": []
+        },
+        {
+          "sub-event": "Brian discovers a new delicious vegan recipe for a lentil burger and tries it out for dinner.",
+          "date": "25 March, 2020",
+          "id": "E4",
+          "caused_by": []
+        },
+{
+"sub-event": "Brian adopts a rescue fish and sets up an aquarium in his apartment.",
+"date": "1 April, 2020",
+"id": "E5",
+"caused_by": []
+},
+{
+"sub-event": "Brian visits a local farm and learns about organic farming techniques.",
+"date": "5 April, 2020",
+"id": "E6",
+"caused_by": ["E1"]
+},
+{
+"sub-event": "Brian volunteers at a pet shelter and helps train the dogs to follow basic commands.",
+"date": "10 April, 2020",
+"id": "E7",
+"caused_by": ["E2"]
+},
+{
+"sub-event": "Brian tries out a new recipe for a chickpea salad and shares it with his friends.",
+"date": "15 April, 2020",
+"id": "E8",
+"caused_by": ["E4"]
+}
+      ]
+OUTPUT: 

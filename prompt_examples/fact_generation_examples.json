@@ -1,0 +1,31 @@
+{
+  "input_prefix": "CONVERSATION: ",
+  "output_prefix": "FACT:",
+  "examples": [
+    {
+      "input": "\n3:07 pm on 28 January, 2020\nDaniel Parker said, \"Hi Michelle! What's new? Anything exciting going on?\"\nMichelle Mateo said, \"Hey Daniel! Been good, thanks. Just started my Masters in Psychology the 20th. Pretty exciting learning all the theories and stuff. Anything new happening with you?\"\nDaniel Parker said, \"Congrats on your Masters, Michelle! I just started a new job and it's been cool learning how to code and problem-solve. I do a morning run every day to stay energized. What about you? Got any hobbies or daily rituals?\"\nMichelle Mateo said, \"Congrats on the new job, Daniel! Running in the morning is great. I've been doing ballet 3x a week, which is great for staying focused and active. Plus, I do morning meditation and journaling to set intentions. You got any other hobbies or rituals apart from work?\"\nDaniel Parker said, \"Cool, Michelle! Ballet's awesome. I love playing guitar - pretty much every night I spend a few minutes strumming and letting my mind wander. Fun way to unwind and express myself. What other hobbies do you do that make you happy?\"\nMichelle Mateo said, \"That's awesome, Daniel! Playing guitar helps me relax too. Ballet and meditation plus cooking are my favourite hobbies. Last Saturday I made a delicious Italian meal for my friends. We had pasta, garlic bread and tiramisu for dessert - it was so much fun! How about you? Do you have any hobbies that you love doing?\"\nDaniel Parker said, \"Thanks Michelle! Cooking's a fun way to hang with friends. I love experimenting with flavors and recipes. Last Friday I made a huge batch of salsa and invited pals over for tacos - it was awesome! Oh and I got a promotion on Monday - we all celebrated with dinner at our fave spot - memorable night!\"\nMichelle Mateo said, \"Congrats on the promotion, Dan! Taco night sounds great - hope you had a great celebration. By the way, I just found this cool book on psychology, \"The Power of Now\" by Eckhart Tolle. Added it to my reading list so I'm excited to read it. Got any book recs?\"\nDaniel Parker said, \"Thanks, Michelle! \"The Power of Now\" sounds interesting. \"The Alchemist\" by Paulo Coelho is one of my faves. It's a great read about chasing your dreams and finding your purpose. Check it out!\"\nMichelle Mateo said, \"Wow, cool cover! What made 'The Alchemist' so popular?\"\nDaniel Parker said, \"\"The Alchemist\" touches readers deeply with its exploration of self-discovery, chasing dreams, and discovering our place in life. The journey is full of adventure and enlightenment, motivating us to live our passions and trust our instincts. It's truly a magical and inspiring read.\"\nMichelle Mateo said, \"Wow, what a great book! So inspiring. Thanks for sharing, Daniel. These old cameras mean a lot to me. Each has its own story and I love snapping pics with them. Anything special to you?\"\nDaniel Parker said, \"Wow, Michelle, that's amazing! What's your fav camera? This vintage motorcycle means a lot to me - it's been passed down through my fam and it symbolizes our adventurous spirit!\"\nMichelle Mateo said, \"I'm having so much fun with my Polaroid Land Camera - instant photos are awesome! That vintage motorbike of yours looks amazing - what a cool piece of family history! What year is it?\"\nDaniel Parker said, \"Thanks, Michelle! The bike's from '78 and runs great. It's a real family treasure.\"\nMichelle Mateo said, \"Wow, Daniel! That's great it's still in such good shape after all this time. Got any other cool heirlooms or traditions in the fam? See ya!\"\n",
+      "output": {
+        "Daniel Parker": [
+          "Daniel started a new job where he is learning how to code and problem-solve.",
+          "Daniel goes on a daily morning jog to stay energized.",
+          "Daniel plays atleast a few minutes of guitar most nights to wind down.",
+          "Daniel got promoted this week on Monday and celebrated with friends by having dinner at a favorite spot.",
+          "Daniel made salsa and invited friends for a taco night last Friday.",
+          "The Alchemist is one of Daniel's favorite books, about chasing dreams and finding purpose.",
+          "Daniel has a vintage motorcycle from '78 that has been passed down through his family."
+        ],
+        "Michelle Mateo": [
+          "Michelle started her Masters in Psychology on 20th January, 2020 and is excited about it.",
+          "Michelle does ballet 3 times a week to stay active and focused.",
+          "Michelle does meditation and journalling in the morning to set intentions.",
+          "Playing the guitar helps Michelle relax.",
+          "Ballet, meditation and cooking are Michelle's favorite hobbies.",
+          "Michelle cooked an Italian meal consisting of pasta, garlic bread and tiramisu for her friends last Saturday.",
+          "Michelle discovered a book on psychology called The Power of Now and added to her reading list.",
+          "Michelle owns a bunch of old cameras that she loves snapping pics with.",
+          "Michelle's favorite camera is her Polaroid Land Camera that takes instant photos."
+        ]
+      }
+    }
+  ]
+}

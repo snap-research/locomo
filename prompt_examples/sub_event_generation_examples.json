@@ -1,0 +1,21 @@
+{
+  "input_prefix": "INPUT: ",
+  "output_prefix": "OUTPUT:",
+  "examples": [
+    {
+      "input": "Tom moved to a new place and become friend with Emma and Jason.",
+      "output": [
+        "Tom moved to a new city.",
+        "Tom met his neighbors Emma and Jason for the first time.",
+        "Tom invited Emma and Jason for a home-cooked meal to their new home.",
+        "Emma and Jason drop by for a friendly chat."
+     ]
+    },
+    {
+      "input": "Caroline went surfing in Malibu and the waves were big. He injured his ribs hitting the surf board.",
+      "output": [
+        "Caroline went surfing in Malibu and the waves were big. He injured his ribs hitting the surf board."
+      ]
+    }
+  ]
+}
